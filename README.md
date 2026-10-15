@@ -28,11 +28,11 @@ You need [Claude Code](https://claude.com/claude-code) (the version of Claude th
 
 1. At the top of this page, click the green **Code** button, then **Download ZIP**.
 2. Unzip it. You'll get a folder called `menos-suscripciones`.
-3. Download your card statement as a CSV. Almost every bank has it under "Export" or "Download transactions". Ask for at least 6 months, ideally 12.
+3. Get your transactions in whatever form your bank gives them: a CSV or Excel export, PDF statements, or even screenshots. Ask for at least 6 months, ideally 12.
 4. Open Claude Code inside the `menos-suscripciones` folder.
-5. Type: **"Review my subscriptions with this file: "** and drag the CSV into the window.
+5. Type: **"Review my subscriptions"**. Claude first asks a few questions in one message (who it's for, what your business does, which tools you can't live without, which bank you use) and tells you the easiest way to hand over your transactions. Then drag your files into the window.
 
-If you bank with Mercury, in step 3 you can give Claude a read-only key (Mercury → Settings → Tokens) and skip the download.
+If you bank with Mercury, you can skip the download: Claude opens a small file where you paste a read-only key (Mercury → Settings → Tokens). The key never goes in the chat. Claude never asks for passwords, card numbers or bank logins.
 
 **You'll know it worked when** a page like the one below opens in your browser, with your tools and what you can save.
 
@@ -59,7 +59,7 @@ flowchart LR
 - **Detection:** the unit is the month, not the charge. A merchant charging in consecutive months is monthly (quarterly or annual from the median gap between active months). That handles two plans from the same vendor, usage-based billing and credit top-ups, which break detection based on the interval between charges. Refunds net into their month; a merchant with a positive net balance is income and is dropped.
 - **Separation of concerns:** the model never does arithmetic. Every amount on the page comes from `scan.json`; the diagnosis only references keys, and `render` fails on an unknown key or verdict.
 - **Languages:** `"lang": "en" | "es"` in the diagnosis switches every label on the page; the catalog carries both languages. Verdicts and statuses are accepted in either language.
-- **Sources:** a CSV from any bank (detects delimiter, English or Spanish headers, single amount or debit/credit columns, day/month or month/day dates, positive charges with a warning), generic JSON or Mercury-shaped JSON, and the Mercury API (`GET /transactions`, Basic Auth, paginated with `start_after`). Internal transfers and failed or cancelled transactions are dropped.
+- **Sources:** a CSV from any bank (detects delimiter, English or Spanish headers, single amount or debit/credit columns, day/month or month/day dates, positive charges with a warning), generic JSON or Mercury-shaped JSON, and the Mercury API (`GET /transactions`, Basic Auth, paginated with `start_after`). Internal transfers and failed or cancelled transactions are dropped. PDF statements, screenshots and email receipts are transcribed by Claude into the JSON format; `scan` prints total charges per month so the transcription can be checked against the statement's own totals.
 - **Limitations:** it only sees the cards you give it. A monthly charge that appeared once in the period is listed as a one-off. Merchant normalization is heuristic: when two odd names are the same tool, Claude merges them in the diagnosis.
 - **Tests:** `python3 -m unittest discover -s tests`.
 

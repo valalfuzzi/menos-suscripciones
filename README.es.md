@@ -28,11 +28,11 @@ Necesitas [Claude Code](https://claude.com/claude-code) (la versión de Claude q
 
 1. Arriba en esta página, toca el botón verde **Code** y luego **Download ZIP**.
 2. Descomprime el ZIP. Te queda una carpeta llamada `menos-suscripciones`.
-3. Descarga el estado de cuenta de tu tarjeta en formato CSV. Casi todos los bancos lo tienen en «Exportar» o «Descargar movimientos». Pide al menos 6 meses, y mejor 12.
+3. Consigue tus movimientos como te los dé tu banco: un CSV o Excel, los estados de cuenta en PDF, o hasta capturas de pantalla. Que sean al menos 6 meses, y mejor 12.
 4. Abre Claude Code dentro de la carpeta `menos-suscripciones`.
-5. Escríbele: **«Revisa mis suscripciones con este archivo: »** y arrastra el CSV a la ventana.
+5. Escríbele: **«Revisa mis suscripciones»**. Claude primero te hace unas preguntas en un solo mensaje (para quién es, a qué se dedica tu negocio, qué herramientas no puedes dejar, qué banco usas) y te dice la forma más fácil de pasarle tus movimientos. Después arrastras tus archivos a la ventana.
 
-Si usas Mercury, en el paso 3 puedes darle a Claude una llave de solo lectura (Mercury → Settings → Tokens) y no tienes que descargar nada.
+Si usas Mercury, no tienes que descargar nada: Claude te abre un archivito donde pegas una llave de solo lectura (Mercury → Settings → Tokens). La llave nunca va en el chat. Claude nunca te pide contraseñas, números de tarjeta ni el acceso a tu banco.
 
 **Sabrás que funcionó cuando** se abra en tu navegador una página como la de abajo, con tus herramientas y lo que puedes ahorrar.
 
@@ -59,7 +59,7 @@ flowchart LR
 - **Detección:** la unidad es el mes, no el cargo. Un comercio con cobros en meses consecutivos es mensual (también trimestral o anual por la mediana de la distancia entre meses). Eso resuelve dos planes del mismo proveedor, cobro por uso y recargas de créditos, que rompen la detección por intervalos entre cargos. Los reembolsos se netean en su mes; un comercio con saldo neto positivo es ingreso y se descarta.
 - **Separación de responsabilidades:** el modelo nunca hace aritmética. Todo monto de la página sale de `scan.json`; el diagnóstico solo referencia llaves (`keys`), y `render` falla si una llave no existe o un veredicto no es válido.
 - **Idiomas:** `"lang": "es" | "en"` en el diagnóstico cambia todas las etiquetas de la página; el catálogo trae los dos idiomas. Los veredictos y estados se aceptan en cualquiera de los dos.
-- **Fuentes:** CSV de cualquier banco (detecta separador, columnas en inglés o español, monto único o débito/crédito, fechas día/mes o mes/día, cargos en positivo con aviso), JSON genérico o con la forma de Mercury, y la API de Mercury (`GET /transactions`, Basic Auth, paginado con `start_after`). Se descartan transferencias internas y transacciones fallidas o canceladas.
+- **Fuentes:** CSV de cualquier banco (detecta separador, columnas en inglés o español, monto único o débito/crédito, fechas día/mes o mes/día, cargos en positivo con aviso), JSON genérico o con la forma de Mercury, y la API de Mercury (`GET /transactions`, Basic Auth, paginado con `start_after`). Se descartan transferencias internas y transacciones fallidas o canceladas. Los PDF, las capturas y los recibos por correo los transcribe Claude al formato JSON; `scan` imprime el total de cargos por mes para cuadrar la transcripción contra los totales del propio estado de cuenta.
 - **Limitaciones:** solo ve las tarjetas que le pases. Un cobro mensual que apareció una sola vez en el período queda como cargo único. La normalización de comercios es heurística: si dos nombres raros son lo mismo, Claude los junta en el diagnóstico.
 - **Pruebas:** `python3 -m unittest discover -s tests`.
 

@@ -16,18 +16,42 @@ labels follow it. Spanish is neutral Latin American: "tú", never "vosotros" or 
 Run every command from the repo root (`python3 -m menos_suscripciones …`). No dependencies:
 the Python 3.9+ that ships with macOS is enough.
 
+## 0. Ask for everything first, in one message
+
+Before touching any data, send **one** short message with every question you need, so the
+person answers once instead of being drip-fed questions. Adapt the wording to their language:
+
+> To review your subscriptions I need a few things:
+> 1. **Who is this for?** Your name or your business's (it goes in the report title).
+> 2. **What does your business do, and how many people use your tools?** One line is enough.
+>    It's how I tell an essential tool from one you can drop.
+> 3. **Which tools can't you live without?** Anything that runs your clients, your team or an automation.
+> 4. **Which bank or card pays for your software?** If it's more than one, tell me all of them.
+> 5. **How do you want to give me the transactions?** Whatever is easiest for you:
+>    - **Mercury:** I can read it directly with a read-only key.
+>    - **Any other bank:** export your transactions as a CSV or Excel file.
+>    - **Only PDF statements, or screenshots:** that works too, I'll read them.
+>    - **No statements at hand:** if your email is connected here, I can look for your receipts.
+> 6. **How far back?** 12 months is ideal (that's how yearly renewals show up); 6 is the minimum.
+
+Wait for the answers. If something is missing, ask only for that. Use answers 1–3 in the
+diagnosis (`owner`, verdicts, `not_seen`), and don't ask them again later.
+
+**Never ask for passwords, card numbers or bank logins.** Nothing in this process needs them.
+
 ## 1. Get the transactions
 
-Ask where they come from, in this order of preference:
+Use the route the person chose:
 
-| Source | How |
+| Route | How |
 |---|---|
-| Mercury API | `MERCURY_API_KEY` in the environment or a `.env` → `scan --mercury --months 6` (`--env-file path/.env` if it lives elsewhere). Read-only key: Mercury → Settings → Tokens. |
-| A bank connector in this session (Mercury, Plaid…) | Fetch the transactions with complete pagination, save them to `work/transactions.json` as a list of `{date, description, amount}` (charges negative) and run `scan --json work/transactions.json`. |
-| A CSV from the bank or card | `scan --csv file.csv [other.csv …]`. Columns, delimiter and date format are detected; English and Spanish headers both work. If it warns that it flipped the sign and that's wrong, rerun with `--charges-negative`. |
+| **Mercury, read-only key** | Never ask them to paste the key in the chat. Create a `.env` file in the repo root with the line `MERCURY_API_KEY=` and open it for them (`open -e .env` on macOS); they create the key in Mercury → Settings → Tokens (read-only), paste it there and save. Then `scan --mercury --months 12`. `.env` is in `.gitignore`. |
+| **A bank connector in this session** (Mercury, Plaid…) | Fetch the transactions with complete pagination, save them to `work/transactions.json` as a list of `{date, description, amount}` (charges negative), and run `scan --json work/transactions.json`. |
+| **CSV or Excel export** | `scan --csv file.csv [other.csv …]`. For Excel, ask them to "Save as CSV" (or convert it yourself if a tool for that is available). Columns, delimiter and date format are detected; English and Spanish headers both work. If it warns it flipped the sign and that's wrong, rerun with `--charges-negative`. Many banks hide the export under "Download", "Export movements" or "Descargar movimientos"; help them find it if they ask. |
+| **PDF statements or screenshots** | Read each file yourself and transcribe **every** transaction (not only the ones that look like software) into `work/transactions.json` as `{date, description, amount}` with charges negative. Then **check your transcription**: `scan` prints the total charges per month; compare each one with the statement's own total for that period. If they don't match, find the missing rows before going on. Tell the person you transcribed it and that the check passed (or what didn't match). |
+| **Email receipts** (no statements) | Search their email for receipts and invoices ("receipt", "invoice", "your subscription", "recibo", "factura") over the period, and write one `{date, description, amount}` per charge to `work/transactions.json`. Say in `not_seen` that receipts miss anything that doesn't email one. |
 
-Ask for **at least 6 months** (12 is better: that's how annual renewals show up) and **every
-card** that pays for software. If there's only one, say so in `not_seen`.
+Ask for **every card** that pays for software. If there's only one, say so in `not_seen`.
 
 ```bash
 python3 -m menos_suscripciones scan --csv ~/Downloads/statement.csv --out work/scan.json

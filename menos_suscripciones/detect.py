@@ -67,7 +67,8 @@ def _display_name(descriptions: list[str]) -> str:
 
 def detect(charges: list[Charge], min_one_off: float = 10.0) -> dict:
     if not charges:
-        return {"period": None, "n_transactions": 0, "recurring": [], "one_offs": [], "warnings": ["No hay transacciones."]}
+        return {"period": None, "n_transactions": 0, "recurring": [], "one_offs": [], "charges_by_month": {},
+                "warnings": ["No hay transacciones."]}
     start = min(c.date for c in charges)
     end = max(c.date for c in charges)
 
@@ -135,6 +136,13 @@ def detect(charges: list[Charge], min_one_off: float = 10.0) -> dict:
             "by_month": by_month,
         })
 
+    # Total de cargos por mes (todo, no solo suscripciones): sirve para cuadrar contra
+    # el total del estado de cuenta cuando las transacciones se transcribieron de un PDF.
+    charges_by_month: dict[str, float] = defaultdict(float)
+    for c in charges:
+        if c.amount < 0:
+            charges_by_month[_month(c.date)] += -c.amount
+
     recurring.sort(key=lambda r: (r["status"] != "activa", -r["monthly_cost"]))
     one_offs.sort(key=lambda o: -o["amount"])
     return {
@@ -142,6 +150,7 @@ def detect(charges: list[Charge], min_one_off: float = 10.0) -> dict:
         "n_transactions": len(charges),
         "recurring": recurring,
         "one_offs": one_offs[:30],
+        "charges_by_month": {m: round(v, 2) for m, v in sorted(charges_by_month.items())},
         "warnings": [],
     }
 

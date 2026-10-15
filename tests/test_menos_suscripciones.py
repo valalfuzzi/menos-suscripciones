@@ -124,6 +124,11 @@ class DetectTests(unittest.TestCase):
         self.assertEqual(res["recurring"][0]["monthly_cost"], 2.0)
         self.assertEqual(res["one_offs"][0]["key"], "appsumo")
 
+    def test_charges_by_month_counts_every_charge(self):
+        charges = monthly("Slack", -70, [7, 8]) + [Charge(date(2026, 7, 9), "Super", -30.5),
+                                                   Charge(date(2026, 7, 10), "Cliente", 500)]
+        self.assertEqual(detect(charges)["charges_by_month"], {"2026-07": 100.5, "2026-08": 70})
+
     def test_income_is_not_a_subscription(self):
         charges = monthly("Cliente Acme", 500, [2, 3, 4])
         self.assertEqual(detect(charges)["recurring"], [])

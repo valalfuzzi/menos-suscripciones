@@ -73,6 +73,10 @@ def cmd_scan(args) -> int:
     for r in result["recurring"]:
         flag = "  ↑ cambió de precio" if r["price_changed"] else ""
         print(f"{r['key'][:28]:<28} {r['monthly_cost']:>10.2f}  {r['cadence']:<10} {r['status']:<7} {r['last_date']}{flag}")
+    if result["charges_by_month"]:
+        print("\nTotal de cargos por mes (para cuadrar contra el estado de cuenta):")
+        for m, v in result["charges_by_month"].items():
+            print(f"  {m}  {v:>12,.2f}")
     if result["one_offs"]:
         print(f"\nCargos únicos de ${args.min_one_off:.0f} o más (pueden ser renovaciones anuales): {len(result['one_offs'])}")
     print(f"\nGuardado en {out}")
