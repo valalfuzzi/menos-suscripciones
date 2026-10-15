@@ -66,4 +66,8 @@ flowchart LR
 
 - ¿Tu banco exporta un CSV que no lee? Abre un issue con los encabezados del archivo (sin tus movimientos).
 - ¿Conoces una alternativa open source buena? Agrégala a `menos_suscripciones/alternatives.json` y manda un pull request.
-- Hecho por [Nerd Heart](https://nerdheart.net). Licencia MIT.
+- Licencia MIT.
+
+## Quién lo hizo
+
+Lo hice yo, [Valeria Alfuzzi](https://www.valeriaalfuzzi.com), consultora de Notion y arquitecta de sistemas con IA en [Nerd Heart](https://nerdheart.net). Si quieres algo así para tu negocio, o tienes una idea para mejorarlo, escríbeme a [team@nerdheart.net](mailto:team@nerdheart.net) o pasa por [valeriaalfuzzi.com](https://www.valeriaalfuzzi.com).
