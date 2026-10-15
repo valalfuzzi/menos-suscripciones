@@ -8,7 +8,7 @@ Claude reviews what your card charges you, tells you what to cancel, and finds f
 
 ## What this is
 
-A skill for Claude Code that works in English or Spanish: Claude answers in whatever language you write in. You hand it your bank or card statement and Claude finds every charge that repeats each month. It asks about what it can't guess, decides what stays and what goes, and builds you a page with the plan: what you pay today, what you can cut, and which free tool does the same job.
+For business owners, freelancers, and anyone who wants to get their finances in order. It's a skill for Claude Code that works in English or Spanish: Claude answers in whatever language you write in. You hand it your bank or card statement and Claude finds every charge that repeats each month. It asks about what it can't guess, decides what stays and what goes, and builds you a page with the plan: what you pay today, what you can cut, and which free tool or cheaper plan does the same job.
 
 ## The problem it solves
 
@@ -30,7 +30,7 @@ You need [Claude Code](https://claude.com/claude-code) (the version of Claude th
 2. Unzip it. You'll get a folder called `menos-suscripciones`.
 3. Get your transactions in whatever form your bank gives them: a CSV or Excel export, PDF statements, or even screenshots. Ask for at least 6 months, ideally 12.
 4. Open Claude Code inside the `menos-suscripciones` folder.
-5. Type: **"Review my subscriptions"**. Claude first asks a few questions in one message (who it's for, what your business does, which tools you can't live without, which bank you use) and tells you the easiest way to hand over your transactions. Then drag your files into the window.
+5. Type: **"Review my subscriptions"**. Claude first asks a few questions in one message (who it's for, whether it's for a business, freelance work or personal spending, which subscriptions you can't live without, which bank you use, how far back to look) and tells you the easiest way to hand over your transactions. Then drag your files into the window.
 
 If you bank with Mercury, you can skip the download: Claude opens a small file where you paste a read-only key (Mercury → Settings → Tokens). The key never goes in the chat. Claude never asks for passwords, card numbers or bank logins.
 

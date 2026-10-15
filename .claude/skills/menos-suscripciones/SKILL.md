@@ -16,26 +16,40 @@ labels follow it. Spanish is neutral Latin American: "tú", never "vosotros" or 
 Run every command from the repo root (`python3 -m menos_suscripciones …`). No dependencies:
 the Python 3.9+ that ships with macOS is enough.
 
+## Who this is for
+
+Business owners, freelancers, and anyone who wants to get their finances in order. Assume
+nothing about the person: they may run a company, work alone, or be reviewing their personal
+card. Their essential tools, their bank, how they'll share the data and how far back to look
+are always **asked**, never guessed. You recommend; they choose.
+
 ## 0. Ask for everything first, in one message
 
 Before touching any data, send **one** short message with every question you need, so the
 person answers once instead of being drip-fed questions. Adapt the wording to their language:
 
 > To review your subscriptions I need a few things:
-> 1. **Who is this for?** Your name or your business's (it goes in the report title).
-> 2. **What does your business do, and how many people use your tools?** One line is enough.
->    It's how I tell an essential tool from one you can drop.
-> 3. **Which tools can't you live without?** Anything that runs your clients, your team or an automation.
-> 4. **Which bank or card pays for your software?** If it's more than one, tell me all of them.
-> 5. **How do you want to give me the transactions?** Whatever is easiest for you:
->    - **Mercury:** I can read it directly with a read-only key.
->    - **Any other bank:** export your transactions as a CSV or Excel file.
->    - **Only PDF statements, or screenshots:** that works too, I'll read them.
->    - **No statements at hand:** if your email is connected here, I can look for your receipts.
-> 6. **How far back?** 12 months is ideal (that's how yearly renewals show up); 6 is the minimum.
+> 1. **Who is this for?** Your name or your business's. It goes in the report title.
+> 2. **Is this for a business, your freelance work, or your personal spending?** Or a mix.
+>    If it's a business, roughly how many people use the tools?
+> 3. **Which subscriptions can't you live without?** The ones your clients, your work or your
+>    automations depend on. If you're not sure, say so and we'll sort it out together.
+> 4. **Which bank or card pays for your subscriptions?** If it's more than one, list them all;
+>    anything paid from a card I don't see stays out of the review.
+> 5. **What can you share with me?** Best to worst:
+>    - **Mercury:** the best option. I read it directly with a read-only key.
+>    - **Card or bank statements:** a CSV or Excel export if your bank has one; if not,
+>      PDF statements or screenshots work too, I'll read them.
+>    - **Nothing at hand:** if your email is connected here, I can look for receipts.
+>    Tell me what you have and I'll walk you through getting it.
+> 6. **How far back?** I recommend 12 months: that's how yearly renewals show up. 6 is the
+>    minimum. Your call.
 
-Wait for the answers. If something is missing, ask only for that. Use answers 1–3 in the
-diagnosis (`owner`, verdicts, `not_seen`), and don't ask them again later.
+Wait for the answers. If something is missing, ask only for that. If they don't know how to
+get their transactions out of their bank, help with that bank specifically (search its help
+pages if needed): most have it under "Download", "Export", "Statements", "Descargar
+movimientos" or "Estados de cuenta". Use answers 1–3 in the diagnosis (`owner`, verdicts,
+`not_seen`), and don't ask them again later.
 
 **Never ask for passwords, card numbers or bank logins.** Nothing in this process needs them.
 
@@ -65,9 +79,10 @@ price changed. Large one-off charges are listed separately (`one_offs`): annual 
 
 Read all of `work/scan.json`. For each merchant in `recurring`:
 
-1. **Is it software or a subscription service?** Groceries, gas, payroll, taxes and bank fees
-   stay out (mention them in `findings` if they stand out). Personal charges on a business
-   card: name them, without judging.
+1. **Is it a subscription?** Software, apps, streaming, memberships, cloud storage, gyms: all
+   count, personal ones included if the person is reviewing their own spending. Groceries,
+   gas, payroll, taxes and bank fees stay out (mention them in `findings` if they stand out).
+   Personal charges on a business card: name them, without judging.
 2. **Group** keys that are the same tool (`anthropic claude max` + `anthropic claude pro` →
    "Anthropic (Claude)") into one `keys` list.
 3. **Decide the verdict** with what you know about this person. Read any context available
@@ -85,6 +100,10 @@ Read all of `work/scan.json`. For each merchant in `recurring`:
    and the license is still open. Pass `{"name", "url"}` for anything not in the catalog. Never
    suggest something that would break an integration they depend on (bots, automations, a
    client's workflow).
+   For personal subscriptions (streaming, music, storage) an open-source swap rarely fits.
+   Look for the cheaper move instead: a lower tier, yearly instead of monthly billing, a
+   family or shared plan, two services that overlap (keep one), or rotating streaming
+   services month to month. Say the saving only if it comes from a price you checked.
 
 Also check `one_offs` for annual renewals and for purchases that look like subscriptions paid
 from another card.

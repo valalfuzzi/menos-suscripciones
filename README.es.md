@@ -8,7 +8,7 @@ Claude revisa lo que te cobra la tarjeta, te dice qué cancelar y te da alternat
 
 ## Qué es esto
 
-Es una habilidad (skill) para Claude Code, y funciona en español o en inglés: Claude te habla en el idioma en que le escribas. Le pasas el estado de cuenta de tu banco o tu tarjeta y Claude encuentra todos los cobros que se repiten cada mes. Te pregunta lo que no puede adivinar, decide qué se queda y qué se va, y te arma una página con el plan: cuánto pagas hoy, cuánto puedes cortar y qué herramienta gratis hace lo mismo.
+Es para dueños de negocio, freelancers y cualquiera que quiera poner en orden sus finanzas. Es una habilidad (skill) para Claude Code, y funciona en español o en inglés: Claude te habla en el idioma en que le escribas. Le pasas el estado de cuenta de tu banco o tu tarjeta y Claude encuentra todos los cobros que se repiten cada mes. Te pregunta lo que no puede adivinar, decide qué se queda y qué se va, y te arma una página con el plan: cuánto pagas hoy, cuánto puedes cortar y qué herramienta gratis o qué plan más barato te sirve igual.
 
 ## El problema que resuelve
 
@@ -30,7 +30,7 @@ Necesitas [Claude Code](https://claude.com/claude-code) (la versión de Claude q
 2. Descomprime el ZIP. Te queda una carpeta llamada `menos-suscripciones`.
 3. Consigue tus movimientos como te los dé tu banco: un CSV o Excel, los estados de cuenta en PDF, o hasta capturas de pantalla. Que sean al menos 6 meses, y mejor 12.
 4. Abre Claude Code dentro de la carpeta `menos-suscripciones`.
-5. Escríbele: **«Revisa mis suscripciones»**. Claude primero te hace unas preguntas en un solo mensaje (para quién es, a qué se dedica tu negocio, qué herramientas no puedes dejar, qué banco usas) y te dice la forma más fácil de pasarle tus movimientos. Después arrastras tus archivos a la ventana.
+5. Escríbele: **«Revisa mis suscripciones»**. Claude primero te hace unas preguntas en un solo mensaje (para quién es, si es para un negocio, tu trabajo freelance o tus gastos personales, qué suscripciones no puedes dejar, qué banco usas, cuántos meses revisar) y te dice la forma más fácil de pasarle tus movimientos. Después arrastras tus archivos a la ventana.
 
 Si usas Mercury, no tienes que descargar nada: Claude te abre un archivito donde pegas una llave de solo lectura (Mercury → Settings → Tokens). La llave nunca va en el chat. Claude nunca te pide contraseñas, números de tarjeta ni el acceso a tu banco.
 
