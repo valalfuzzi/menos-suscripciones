@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Menos suscripciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&family=Press+Start+2P&display=swap">
+<style>
+  :root {
+    --page:#F4F2EB; --ink:#141110; --window:#FFFFFF; --sage:#C8D9C0; --butter:#F4E1A1; --mint:#B8E6B8;
+    --pink:#F7C6D2; --muted:#EDEAE1; --muted-fg:#5D5951;
+    --serif:"Instrument Serif",Georgia,serif; --mono:"Space Mono",ui-monospace,Menlo,monospace; --pixel:"Press Start 2P",ui-monospace,monospace;
+    color-scheme:light;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--page); color:var(--ink); font:15px/1.55 var(--mono); padding:32px 16px 48px; }
+  ::selection { background:var(--butter); }
+  .wrap { max-width:1120px; margin-inline:auto; display:grid; gap:32px; }
+  header { display:grid; gap:10px; }
+  .eyebrow { font-family:var(--mono); font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
+  h1 { font-family:var(--serif); font-weight:400; font-size:clamp(44px,7vw,76px); line-height:.95; margin:0; text-wrap:balance; }
+  h1 mark { background:var(--butter); color:var(--ink); padding-inline:.12em; }
+  .lede { max-width:68ch; margin:0; }
+  .strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  .stat { border:2px solid var(--ink); background:var(--window); box-shadow:3px 3px 0 var(--ink); padding:14px 16px; display:grid; gap:6px; }
+  .stat.hot { background:var(--butter); }
+  .stat .label { font-family:var(--mono); font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:.06em; line-height:1.6; }
+  .stat .num { font-family:var(--serif); font-size:46px; line-height:1; font-variant-numeric:tabular-nums; }
+  .stat .sub { color:var(--muted-fg); font-size:13px; }
+  .win { border:2px solid var(--ink); background:var(--window); box-shadow:4px 4px 0 var(--ink); min-width:0; }
+  .bar { background:var(--sage); border-bottom:2px solid var(--ink); display:flex; align-items:center; gap:10px; padding:7px 10px; }
+  .bar .box { width:12px; height:12px; border:2px solid var(--ink); background:var(--window); flex:none; }
+  .bar .stripes { flex:1; height:10px; background:repeating-linear-gradient(to bottom,var(--ink) 0 2px,transparent 2px 4px); opacity:.5; }
+  .bar .name { font-family:var(--pixel); font-size:9px; white-space:nowrap; }
+  .body { padding:18px; display:grid; gap:16px; }
+  h2 { font-family:var(--serif); font-weight:400; font-size:34px; line-height:1; margin:0; }
+  .note { color:var(--muted-fg); margin:0; max-width:80ch; font-size:13px; }
+  .scroll { overflow-x:auto; border:2px solid var(--ink); }
+  table { border-collapse:collapse; width:100%; min-width:880px; }
+  th { font-family:var(--mono); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; text-align:left; padding:10px; background:var(--muted); border-bottom:2px solid var(--ink); white-space:nowrap; }
+  td { padding:10px; border-bottom:1px dashed #BDB6A8; vertical-align:top; font-size:14px; }
+  tr:last-child td { border-bottom:0; }
+  td.money, th.money { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .tool { font-family:var(--serif); font-size:21px; line-height:1.1; }
+  a.tool { display:inline-block; }
+  .small { color:var(--muted-fg); font-size:12px; }
+  td a { color:var(--ink); text-decoration-thickness:2px; text-underline-offset:3px; }
+  td a:hover { background:var(--butter); }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline:3px solid var(--ink); outline-offset:2px; }
+  .pill { display:inline-block; font-family:var(--pixel); font-size:8px; text-transform:uppercase; border:2px solid var(--ink); border-radius:999px; padding:5px 8px; white-space:nowrap; line-height:1.3; }
+  .keep { background:var(--mint); } .check { background:var(--butter); } .cut { background:var(--ink); color:var(--page); }
+  .have { background:var(--pink); } .where { background:var(--window); }
+  .plan { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+  .phase { border:2px solid var(--ink); background:var(--page); padding:14px; display:grid; gap:10px; align-content:start; }
+  .phase h3 { font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin:0; line-height:1.6; }
+  .phase ul { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+  .phase li { display:grid; grid-template-columns:18px 1fr; gap:8px; }
+  .phase li::before { content:""; width:14px; height:14px; border:2px solid var(--ink); background:var(--window); margin-top:4px; }
+  .phase li strong { font-weight:400; background:var(--butter); padding-inline:3px; }
+  .saving { color:var(--muted-fg); font-variant-numeric:tabular-nums; }
+  .year { display:grid; gap:10px; }
+  .bars { display:grid; gap:8px; align-items:end; height:180px; border-bottom:2px solid var(--ink); padding-top:24px; }
+  .bars div { position:relative; background:var(--sage); border:2px solid var(--ink); border-bottom:0; }
+  .bars div.partial { background:repeating-linear-gradient(45deg,var(--sage) 0 6px,var(--window) 6px 10px); }
+  .bars div span { position:absolute; top:-22px; left:50%; transform:translateX(-50%); font-size:12px; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .months { display:grid; gap:8px; font-family:var(--mono); font-weight:700; font-size:11px; text-transform:uppercase; text-align:center; }
+  .findings { margin:0; padding-left:20px; display:grid; gap:8px; max-width:80ch; }
+  .controls { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .chip { font:14px var(--mono); background:var(--window); color:var(--ink); border:2px solid var(--ink); box-shadow:3px 3px 0 var(--ink); padding:3px 10px; cursor:pointer; }
+  .chip[aria-pressed="true"] { background:var(--ink); color:var(--page); }
+  .chip:active { transform:translate(3px,3px); box-shadow:none; }
+  .search { font:14px var(--mono); border:2px solid var(--ink); background:var(--window); color:var(--ink); padding:5px 10px; min-width:0; flex:1 1 220px; max-width:340px; }
+  .count { font-family:var(--mono); font-size:11px; text-transform:uppercase; color:var(--muted-fg); }
+  .empty { padding:18px; color:var(--muted-fg); }
+  footer { color:var(--muted-fg); font-size:12px; max-width:80ch; }
+  @media (max-width:520px) { .bars div span { font-size:9px; } }
+  @media (prefers-reduced-motion:reduce) { .chip:active { transform:none; } }
+</style></head>
+<body><div class="wrap">
+  <header>
+    <div class="eyebrow">revisión de suscripciones · Estudio Ejemplo · 2026-09-22</div>
+    <h1>Menos suscripciones</h1>
+    <p class="lede">Lo que te cobra la tarjeta cada mes, qué hacer con cada cargo, y herramientas open source que hacen lo mismo gratis. Ejemplo con datos ficticios.</p>
+  </header>
+  <section class="strip" aria-label="Resumen">
+    <div class="stat"><div class="label">Suscripciones al mes</div><div class="num">$406</div><div class="sub">lo que se repite hoy</div></div>
+    <div class="stat hot"><div class="label">Lo que puedes cortar</div><div class="num">$56.18<span style="font-size:22px">/mes</span></div><div class="sub">Tango · CapCut · ElevenLabs</div></div>
+    <div class="stat"><div class="label">En un año</div><div class="num">$674</div><div class="sub">si cortas todo lo marcado</div></div>
+  </section>
+  
+  <section class="win" aria-labelledby="plan-h">
+    <div class="bar"><span class="box"></span><span class="stripes"></span><span class="name">plan.txt</span><span class="stripes"></span></div>
+    <div class="body"><h2 id="plan-h">Plan</h2><div class="plan"><div class="phase"><h3>Esta semana</h3><ul><li><span><strong>Cancelar ElevenLabs</strong> <span class="saving">$11/mes</span>. El próximo cobro es el 22 de octubre.</span></li></ul></div><div class="phase"><h3>Este mes</h3><ul><li><span><strong>Tango por Mimik</strong> <span class="saving">$26/mes</span>. Exporta las guías, instala la extensión y cancela.</span></li><li><span><strong>CapCut por WolfCut</strong> <span class="saving">$19.18/mes</span>. Pruébalo una semana con un video real antes de cancelar.</span></li><li><span><strong>Usuarios de Workspace</strong>. Borra las cuentas que nadie usa.</span></li></ul></div></div></div>
+  </section>
+  <section class="win" aria-labelledby="subs-h">
+    <div class="bar"><span class="box"></span><span class="stripes"></span><span class="name">tus_suscripciones.db</span><span class="stripes"></span></div>
+    <div class="body">
+      <h2 id="subs-h">Tus suscripciones</h2>
+      <p class="note">Tarjeta de la empresa, 1 abr – 22 sep 2026. Monto = lo que cobró el último mes.</p>
+      <div class="scroll"><table>
+        <thead><tr><th>Herramienta</th><th class="money">Al mes</th><th>Veredicto</th><th>Por qué</th><th>Alternativa</th></tr></thead>
+        <tbody><tr><td><div class="tool">Google Workspace</div></td><td class="money">$155</td><td><span class="pill check">Revisar</span></td><td>Correo, Drive y Meet: se queda. Pero subió de $142.58 a $154.84 en agosto, y eso suele ser un usuario más. Revisa si hay cuentas que nadie usa.</td><td><span class="small">—</span></td></tr><tr><td><div class="tool">Anthropic (Claude)</div></td><td class="money">$120</td><td><span class="pill keep">Mantener</span></td><td>Dos planes: Max ($100) y Pro ($20). Es la herramienta que más trabajo te quita.</td><td><span class="small">—</span></td></tr><tr><td><div class="tool">Slack</div></td><td class="money">$74.93</td><td><span class="pill keep">Mantener</span></td><td>Cobra por miembro activo, por eso el monto sube y baja solo.</td><td><a href="https://mattermost.com" target="_blank" rel="noopener">Mattermost</a></td></tr><tr><td><div class="tool">Tango</div><div class="small">próximo cobro ~2026-10-22</div></td><td class="money">$26</td><td><span class="pill cut">Reemplazar</span></td><td>Guías paso a paso con capturas. Una extensión gratis hace lo mismo. Exporta tus guías antes de cancelar.</td><td><a href="https://westpoint.io/insights/mimik-open-source-local-first-alternative-scribe-tango-guidde" target="_blank" rel="noopener">Mimik</a></td></tr><tr><td><div class="tool">CapCut</div><div class="small">próximo cobro ~2026-10-19</div></td><td class="money">$19.18</td><td><span class="pill cut">Reemplazar</span></td><td>Solo se usa para subtítulos, y eso ya se hace gratis en la compu.</td><td><a href="https://www.opensourcealternatives.to/item/wolfcut" target="_blank" rel="noopener">WolfCut</a> · <a href="https://kdenlive.org" target="_blank" rel="noopener">Kdenlive</a></td></tr><tr><td><div class="tool">ElevenLabs</div><div class="small">próximo cobro ~2026-10-22</div></td><td class="money">$11</td><td><span class="pill cut">Cancelar</span></td><td>Ya transcribes en local con mlx-whisper y la llave no se usa.</td><td><a href="https://github.com/ml-explore/mlx-examples/tree/main/whisper" target="_blank" rel="noopener">mlx-whisper</a></td></tr><tr><td><div class="tool">Lovable</div></td><td class="money">$0 <span class="small">(sin cobros recientes)</span></td><td><span class="pill check">Revisar</span></td><td>$90 en junio y $75 en julio en recargas; nada desde entonces. Confirma que no quede un plan activo.</td><td><a href="https://github.com/dyad-sh/dyad" target="_blank" rel="noopener">Dyad</a></td></tr></tbody>
+      </table></div>
+      <p class="note">Esta revisión solo ve esta tarjeta. Lo que pagues con otra no aparece aquí.</p>
+    </div>
+  </section>
+  <section class="win" aria-labelledby="year-h">
+    <div class="bar"><span class="box"></span><span class="stripes"></span><span class="name">mes_a_mes.txt</span><span class="stripes"></span></div>
+    <div class="body"><h2 id="year-h">Mes a mes</h2><div class="year" role="img" aria-label="Gasto mensual en suscripciones: abr 326, may 354, jun 467, jul 443, ago 395, sep 406 dólares"><div class="bars" style="grid-template-columns:repeat(6,1fr)"><div style="height:69.8%"><span>$326</span></div><div style="height:75.8%"><span>$354</span></div><div style="height:100.0%"><span>$467</span></div><div style="height:94.8%"><span>$443</span></div><div style="height:84.5%"><span>$395</span></div><div class="partial" style="height:86.9%"><span>$406</span></div></div><div class="months" aria-hidden="true" style="grid-template-columns:repeat(6,1fr)"><span>abr</span><span>may</span><span>jun</span><span>jul</span><span>ago</span><span>sep*</span></div></div><p class="note">* Mes en curso: todavía le faltan cargos.</p><ul class="findings"><li>El supermercado aparece todos los meses, pero no es software: quedó fuera.</li><li>Zoom tuvo un cobro fallido en agosto y uno bueno en septiembre. Con un solo cobro real no se puede confirmar que sea mensual.</li><li>No hay renovaciones anuales escondidas: solo Namecheap ($24.16 en abril, dominios).</li></ul></div>
+  </section>
+  <section class="win" aria-labelledby="dir-h">
+    <div class="bar"><span class="box"></span><span class="stripes"></span><span class="name">directorio_open_source.db</span><span class="stripes"></span></div>
+    <div class="body">
+      <h2 id="dir-h">Directorio open source</h2>
+      <p class="note">«Tu compu» y «Navegador» = se instala y listo, cero costo. «Servidor» = tiene que estar prendido siempre: un servidor de ~$5–10/mes o la versión en la nube de la misma empresa.</p>
+      <div class="controls" role="group" aria-label="Filtros">
+        <button class="chip" data-f="all" aria-pressed="true">Todas</button>
+        <button class="chip" data-f="try" aria-pressed="false">Probar ya</button>
+        <button class="chip" data-f="pay" aria-pressed="false">Te ahorra plata</button>
+        <button class="chip" data-f="local" aria-pressed="false">Sin servidor</button>
+        <button class="chip" data-f="server" aria-pressed="false">Necesita servidor</button>
+        <button class="chip" data-f="have" aria-pressed="false">Ya lo tienes</button>
+        <input class="search" id="q" type="search" placeholder="Buscar: video, firmas, Zapier…" aria-label="Buscar herramienta">
+        <span class="count" id="count"></span>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th>Herramienta</th><th>Reemplaza</th><th>Qué hace</th><th>Dónde corre</th><th>Estado</th><th>Nota</th></tr></thead>
+        <tbody id="dir"></tbody>
+      </table><div class="empty" id="empty" hidden>Nada coincide. Prueba otra palabra o quita el filtro.</div></div>
+    </div>
+  </section>
+  <footer>Hecho con Menos Suscripciones, de Nerd Heart. Directorio revisado el 2026-09-19. Los proyectos open source cambian rápido: revisa el repo antes de instalar. Cal.com cerró su código en abril de 2026.</footer>
+</div>
+<script>
+  var TOOLS = [{"name": "Mimik", "replaces": ["Tango", "Scribe", "Guidde"], "category": "Grabación de pantalla", "what": "Extensión: grabas lo que haces y sale una guía paso a paso con capturas. Exporta a HTML, PDF o Markdown.", "runs": "Navegador", "url": "https://westpoint.io/insights/mimik-open-source-local-first-alternative-scribe-tango-guidde", "status": "Probar ya", "note": "", "saving": 26.0}, {"name": "Kdenlive", "replaces": ["CapCut", "Premiere", "Final Cut"], "category": "Video", "what": "Editor multipista completo, con subtítulos por IA.", "runs": "Tu compu", "url": "https://kdenlive.org", "status": "Probar ya", "note": "", "saving": 19.18}, {"name": "WolfCut", "replaces": ["CapCut"], "category": "Video", "what": "Editor con subtítulos automáticos, todo en tu equipo (ffmpeg + whisper.cpp). Sin marca de agua.", "runs": "Tu compu", "url": "https://www.opensourcealternatives.to/item/wolfcut", "status": "Probar ya", "note": "", "saving": 19.18}, {"name": "mlx-whisper", "replaces": ["ElevenLabs", "Deepgram", "Otter", "Rev"], "category": "Audio y voz", "what": "Transcripción local en el chip de una Mac con Apple Silicon. Gratis y el audio no sale de tu equipo.", "runs": "Tu compu", "url": "https://github.com/ml-explore/mlx-examples/tree/main/whisper", "status": "Ya lo tienes", "note": "Ya reemplazó a ElevenLabs.", "saving": 11.0}, {"name": "LibreOffice", "replaces": ["Microsoft 365"], "category": "Archivos", "what": "Documentos, hojas de cálculo y presentaciones en tu compu.", "runs": "Tu compu", "url": "https://www.libreoffice.org", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Nextcloud", "replaces": ["Dropbox", "Google Drive", "Box"], "category": "Archivos", "what": "Nube de archivos propia, con calendario y contactos.", "runs": "Servidor", "url": "https://nextcloud.com", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Audacity", "replaces": ["Adobe Audition"], "category": "Audio y voz", "what": "Grabación y edición de audio.", "runs": "Tu compu", "url": "https://www.audacityteam.org", "status": "Evaluar", "note": "", "saving": 0}, {"name": "OmniVoice Studio", "replaces": ["ElevenLabs"], "category": "Audio y voz", "what": "Clonación de voz, doblaje, dictado y audiolibros, sin cobro por carácter.", "runs": "Tu compu", "url": "https://github.com/debpalash/OmniVoice-Studio", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Activepieces", "replaces": ["Zapier"], "category": "Automatización", "what": "Automatizaciones, más parecido a Zapier y más simple que n8n.", "runs": "Servidor", "url": "https://github.com/activepieces/activepieces", "status": "Evaluar", "note": "", "saving": 0}, {"name": "n8n", "replaces": ["Zapier", "Make"], "category": "Automatización", "what": "Automatizaciones visuales con 400+ integraciones.", "runs": "Servidor", "url": "https://github.com/n8n-io/n8n", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Dyad", "replaces": ["Lovable", "Bolt", "v0"], "category": "Construir apps", "what": "Construye apps con IA en tu compu; pones tu propia API key.", "runs": "Tu compu", "url": "https://github.com/dyad-sh/dyad", "status": "Evaluar", "note": "", "saving": 0}, {"name": "bolt.diy", "replaces": ["Lovable", "Bolt"], "category": "Construir apps", "what": "Versión abierta de Bolt.new. Más técnica de montar.", "runs": "Servidor", "url": "https://github.com/stackblitz-labs/bolt.diy", "status": "Evaluar", "note": "", "saving": 0}, {"name": "ComfyUI", "replaces": ["Midjourney"], "category": "Diseño e imagen", "what": "Genera imágenes y video con modelos abiertos, por nodos. Pide bastante memoria.", "runs": "Tu compu", "url": "https://www.comfy.org", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Penpot", "replaces": ["Canva", "Figma"], "category": "Diseño e imagen", "what": "Diseño y prototipos en el navegador, sin pago por usuario.", "runs": "Navegador", "url": "https://penpot.app", "status": "Evaluar", "note": "", "saving": 0}, {"name": "rembg", "replaces": ["remove.bg"], "category": "Diseño e imagen", "what": "Quita fondos con IA, sin límite ni marca de agua. De línea de comandos: Claude lo corre por ti.", "runs": "Tu compu", "url": "https://github.com/danielgatis/rembg", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Cap", "replaces": ["Loom"], "category": "Grabación de pantalla", "what": "Grabación de pantalla con links, comentarios y transcripción.", "runs": "Tu compu", "url": "https://github.com/CapSoftware/Cap", "status": "Evaluar", "note": "", "saving": 0}, {"name": "OBS Studio", "replaces": ["Riverside", "StreamYard"], "category": "Grabación de pantalla", "what": "Grabación y streaming hasta 4K, sin límite. No trae editor.", "runs": "Tu compu", "url": "https://obsproject.com", "status": "Evaluar", "note": "", "saving": 0}, {"name": "OpenScreen", "replaces": ["Screen Studio"], "category": "Grabación de pantalla", "what": "Grabación con zoom automático, seguimiento del cursor y subtítulos locales.", "runs": "Tu compu", "url": "https://openscreen.io", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Dub", "replaces": ["Bitly"], "category": "Marketing y redes", "what": "Links cortos con analytics; nube con plan gratis.", "runs": "Servidor", "url": "https://github.com/dubinc/dub", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Formbricks", "replaces": ["Typeform", "Tally", "SurveyMonkey"], "category": "Marketing y redes", "what": "Formularios y encuestas con respuestas ilimitadas.", "runs": "Servidor", "url": "https://formbricks.com", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Kutt", "replaces": ["Bitly"], "category": "Marketing y redes", "what": "Acortador de links simple con estadísticas.", "runs": "Servidor", "url": "https://github.com/thedevs-network/kutt", "status": "Evaluar", "note": "", "saving": 0}, {"name": "LanguageTool", "replaces": ["Grammarly"], "category": "Marketing y redes", "what": "Corrector en 40+ idiomas, con extensión de navegador.", "runs": "Navegador", "url": "https://languagetool.org", "status": "Evaluar", "note": "", "saving": 0}, {"name": "LinkStack", "replaces": ["Linktree"], "category": "Marketing y redes", "what": "Página de links para la bio, muy personalizable.", "runs": "Servidor", "url": "https://linkstack.org", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Plausible", "replaces": ["Google Analytics"], "category": "Marketing y redes", "what": "Analytics web ligero y privado.", "runs": "Servidor", "url": "https://plausible.io", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Postiz", "replaces": ["Buffer", "Hootsuite", "Later", "Zernio"], "category": "Marketing y redes", "what": "Programa posts en 14+ redes (LinkedIn, Instagram, Pinterest…). Tiene API.", "runs": "Servidor", "url": "https://openalternative.co/postiz", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Umami", "replaces": ["Google Analytics"], "category": "Marketing y redes", "what": "Analytics web simple y privado, sin banner de cookies.", "runs": "Servidor", "url": "https://umami.is", "status": "Evaluar", "note": "", "saving": 0}, {"name": "listmonk", "replaces": ["Mailchimp", "ConvertKit", "Kit", "Beehiiv"], "category": "Marketing y redes", "what": "Newsletter y listas de correo en tu servidor.", "runs": "Servidor", "url": "https://listmonk.app", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Jitsi Meet", "replaces": ["Zoom"], "category": "Reuniones", "what": "Videollamadas en el navegador, sin cuenta.", "runs": "Navegador", "url": "https://meet.jit.si", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Meet2Notes", "replaces": ["Fireflies", "Fathom"], "category": "Reuniones", "what": "Asistente local: transcripción, quién habló y notas con IA.", "runs": "Tu compu", "url": "https://github.com/estebanstifli/Meet2Notes", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Meetily", "replaces": ["Fireflies", "Otter", "Granola"], "category": "Reuniones", "what": "Transcribe y resume reuniones en tu compu, sin bot en la llamada.", "runs": "Tu compu", "url": "https://meetily.ai/open-source", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Bitwarden", "replaces": ["1Password", "LastPass", "Dashlane"], "category": "Seguridad", "what": "Gestor de contraseñas con plan gratis en la nube.", "runs": "Navegador", "url": "https://bitwarden.com", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Vaultwarden", "replaces": ["1Password", "Bitwarden"], "category": "Seguridad", "what": "Servidor liviano compatible con las apps de Bitwarden.", "runs": "Servidor", "url": "https://github.com/dani-garcia/vaultwarden", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Documenso", "replaces": ["DocuSign", "PandaDoc", "BreezeDoc"], "category": "Ventas y admin", "what": "Firmas electrónicas con historial, sin cobro por documento. Tiene API.", "runs": "Servidor", "url": "https://github.com/documenso/documenso", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Dolibarr", "replaces": ["QuickBooks", "Zoho"], "category": "Ventas y admin", "what": "ERP todo en uno: CRM, facturación e inventario.", "runs": "Servidor", "url": "https://www.dolibarr.org", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Easy!Appointments", "replaces": ["Calendly", "TidyCal", "Acuity"], "category": "Ventas y admin", "what": "Agenda de citas con varios servicios y personas; sincroniza con Google Calendar.", "runs": "Servidor", "url": "https://easyappointments.org", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Twenty", "replaces": ["HubSpot", "Attio", "Pipedrive"], "category": "Ventas y admin", "what": "CRM moderno, personalizable sin código.", "runs": "Servidor", "url": "https://github.com/twentyhq/twenty", "status": "Evaluar", "note": "", "saving": 0}, {"name": "AI YouTube Shorts Generator", "replaces": ["Opus Clip", "SubMagic"], "category": "Video", "what": "Script: video largo a shorts 9:16 con highlights por LLM, Whisper y recorte vertical.", "runs": "Tu compu", "url": "https://github.com/samuraigpt/ai-youtube-shorts-generator", "status": "Evaluar", "note": "", "saving": 0}, {"name": "HyperFrames", "replaces": ["After Effects"], "category": "Video", "what": "Motion graphics escritos en HTML y renderizados a MP4.", "runs": "Tu compu", "url": "https://github.com/heygen-com/hyperframes", "status": "Evaluar", "note": "", "saving": 0}, {"name": "OpenClipper", "replaces": ["Opus Clip", "Klap"], "category": "Video", "what": "Corta un video largo en Shorts/Reels con IA: mejores momentos, subtítulos animados y reencuadre vertical.", "runs": "Tu compu", "url": "https://github.com/GrepCut/OpenClipper", "status": "Evaluar", "note": "", "saving": 0}, {"name": "OpenCut", "replaces": ["CapCut"], "category": "Video", "what": "Editor de video en el navegador; el material no sale de tu equipo.", "runs": "Navegador", "url": "https://www.opensourcealternatives.to/item/opencut", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Rescript", "replaces": ["Descript"], "category": "Video", "what": "Editas el video editando la transcripción. Transcribe local, sin cuenta.", "runs": "Navegador", "url": "https://www.producthunt.com/products/rescript-edit-videos-like-you-edit-text", "status": "Evaluar", "note": "", "saving": 0}, {"name": "Mattermost", "replaces": ["Slack"], "category": "Reuniones", "what": "Chat de equipo con canales, en tu servidor. Las integraciones de Slack no pasan solas.", "runs": "Servidor", "url": "https://mattermost.com", "status": "No conviene", "note": "Romperías las integraciones de Slack.", "saving": 0}];
+  var ST = {"Probar ya": "keep", "Ya lo tienes": "have", "Evaluar": "check", "Para clientes": "where", "No conviene": "cut"};
+  var tbody = document.getElementById("dir"), countEl = document.getElementById("count"),
+      emptyEl = document.getElementById("empty"), q = document.getElementById("q"),
+      chips = Array.prototype.slice.call(document.querySelectorAll(".chip")), filter = "all";
+  try { filter = localStorage.getItem("ms-filter") || "all"; } catch (err) {}
+  if (!chips.some(function (c) { return c.dataset.f === filter; })) filter = "all";
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  function matches(t) {
+    switch (filter) {
+      case "try": return t.status === "Probar ya";
+      case "pay": return t.saving > 0;
+      case "local": return t.runs !== "Servidor";
+      case "server": return t.runs === "Servidor";
+      case "have": return t.status === "Ya lo tienes";
+      default: return true;
+    }
+  }
+  function render() {
+    var term = q.value.trim().toLowerCase();
+    var rows = TOOLS.filter(function (t) {
+      if (!matches(t)) return false;
+      return !term || [t.name, t.replaces.join(" "), t.category, t.what, t.runs, t.status, t.note].join(" ").toLowerCase().indexOf(term) !== -1;
+    });
+    tbody.innerHTML = rows.map(function (t) {
+      var note = (t.saving ? '<span class="saving">Ahorra $' + t.saving + '/mes.</span> ' : '') + esc(t.note);
+      return '<tr><td><a class="tool" href="' + esc(t.url) + '" target="_blank" rel="noopener">' + esc(t.name) + '</a><div class="small">' + esc(t.category) + '</div></td>' +
+        '<td>' + esc(t.replaces.join(", ")) + '</td><td>' + esc(t.what) + '</td>' +
+        '<td><span class="pill where">' + esc(t.runs) + '</span></td>' +
+        '<td><span class="pill ' + ST[t.status] + '">' + esc(t.status) + '</span></td>' +
+        '<td>' + (note.trim() ? note : '<span class="small">—</span>') + '</td></tr>';
+    }).join("");
+    emptyEl.hidden = rows.length > 0;
+    countEl.textContent = rows.length + " de " + TOOLS.length;
+    chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c.dataset.f === filter)); });
+  }
+  chips.forEach(function (c) { c.addEventListener("click", function () {
+    filter = c.dataset.f; try { localStorage.setItem("ms-filter", filter); } catch (err) {} render(); }); });
+  q.addEventListener("input", render);
+  render();
+</script>
+</body></html>

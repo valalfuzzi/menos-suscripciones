@@ -1,0 +1,42 @@
+{
+  "title": "Menos suscripciones",
+  "owner": "Estudio Ejemplo",
+  "as_of": "2026-09-22",
+  "source": "Tarjeta de la empresa, 1 abr – 22 sep 2026",
+  "lede": "Lo que te cobra la tarjeta cada mes, qué hacer con cada cargo, y herramientas open source que hacen lo mismo gratis. Ejemplo con datos ficticios.",
+  "subscriptions": [
+    {"keys": ["google workspace"], "name": "Google Workspace", "verdict": "revisar",
+     "why": "Correo, Drive y Meet: se queda. Pero subió de $142.58 a $154.84 en agosto, y eso suele ser un usuario más. Revisa si hay cuentas que nadie usa.",
+     "alternatives": []},
+    {"keys": ["anthropic claude max", "anthropic claude pro"], "name": "Anthropic (Claude)", "verdict": "mantener",
+     "why": "Dos planes: Max ($100) y Pro ($20). Es la herramienta que más trabajo te quita.", "alternatives": []},
+    {"keys": ["slack"], "name": "Slack", "verdict": "mantener",
+     "why": "Cobra por miembro activo, por eso el monto sube y baja solo.", "alternatives": ["Mattermost"]},
+    {"keys": ["tango"], "name": "Tango", "verdict": "reemplazar",
+     "why": "Guías paso a paso con capturas. Una extensión gratis hace lo mismo. Exporta tus guías antes de cancelar.",
+     "alternatives": ["Mimik"]},
+    {"keys": ["capcut"], "name": "CapCut", "verdict": "reemplazar",
+     "why": "Solo se usa para subtítulos, y eso ya se hace gratis en la compu.", "alternatives": ["WolfCut", "Kdenlive"]},
+    {"keys": ["elevenlabs"], "name": "ElevenLabs", "verdict": "cancelar",
+     "why": "Ya transcribes en local con mlx-whisper y la llave no se usa.", "alternatives": ["mlx-whisper"]},
+    {"keys": ["lovable credits"], "name": "Lovable", "verdict": "revisar",
+     "why": "$90 en junio y $75 en julio en recargas; nada desde entonces. Confirma que no quede un plan activo.",
+     "alternatives": ["Dyad"]}
+  ],
+  "plan": [
+    {"when": "Esta semana", "items": [
+      {"title": "Cancelar ElevenLabs", "saving": 11, "detail": "El próximo cobro es el 22 de octubre."}]},
+    {"when": "Este mes", "items": [
+      {"title": "Tango por Mimik", "saving": 26, "detail": "Exporta las guías, instala la extensión y cancela."},
+      {"title": "CapCut por WolfCut", "saving": 19.18, "detail": "Pruébalo una semana con un video real antes de cancelar."},
+      {"title": "Usuarios de Workspace", "detail": "Borra las cuentas que nadie usa."}]}
+  ],
+  "findings": [
+    "El supermercado aparece todos los meses, pero no es software: quedó fuera.",
+    "Zoom tuvo un cobro fallido en agosto y uno bueno en septiembre. Con un solo cobro real no se puede confirmar que sea mensual.",
+    "No hay renovaciones anuales escondidas: solo Namecheap ($24.16 en abril, dominios)."
+  ],
+  "not_seen": "Esta revisión solo ve esta tarjeta. Lo que pagues con otra no aparece aquí.",
+  "directory": {"mlx-whisper": {"status": "Ya lo tienes", "note": "Ya reemplazó a ElevenLabs."},
+                "Mattermost": {"status": "No conviene", "note": "Romperías las integraciones de Slack."}}
+}
