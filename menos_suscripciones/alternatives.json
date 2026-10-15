@@ -1,6 +1,9 @@
 {
   "as_of": "2026-09-19",
-  "note": "Los proyectos open source cambian rápido: revisa el repo antes de instalar. Cal.com cerró su código en abril de 2026.",
+  "note": {
+    "es": "Los proyectos open source cambian rápido: revisa el repo antes de instalar. Cal.com cerró su código en abril de 2026.",
+    "en": "Open-source projects change fast: check the repo before installing. Cal.com closed its source in April 2026."
+  },
   "tools": [
     {
       "name": "Mimik",
@@ -9,9 +12,12 @@
         "Scribe",
         "Guidde"
       ],
-      "category": "Grabación de pantalla",
-      "what": "Extensión: grabas lo que haces y sale una guía paso a paso con capturas. Exporta a HTML, PDF o Markdown.",
-      "runs": "Navegador",
+      "category": "screen",
+      "what": {
+        "es": "Extensión: grabas lo que haces y sale una guía paso a paso con capturas. Exporta a HTML, PDF o Markdown.",
+        "en": "Browser extension: record what you do and get a step-by-step guide with screenshots. Exports to HTML, PDF or Markdown."
+      },
+      "runs": "browser",
       "url": "https://westpoint.io/insights/mimik-open-source-local-first-alternative-scribe-tango-guidde"
     },
     {
@@ -19,9 +25,12 @@
       "replaces": [
         "CapCut"
       ],
-      "category": "Video",
-      "what": "Editor con subtítulos automáticos, todo en tu equipo (ffmpeg + whisper.cpp). Sin marca de agua.",
-      "runs": "Tu compu",
+      "category": "video",
+      "what": {
+        "es": "Editor con subtítulos automáticos, todo en tu equipo (ffmpeg + whisper.cpp). Sin marca de agua.",
+        "en": "Video editor with automatic captions, all on your machine (ffmpeg + whisper.cpp). No watermark."
+      },
+      "runs": "computer",
       "url": "https://www.opensourcealternatives.to/item/wolfcut"
     },
     {
@@ -31,9 +40,12 @@
         "Premiere",
         "Final Cut"
       ],
-      "category": "Video",
-      "what": "Editor multipista completo, con subtítulos por IA.",
-      "runs": "Tu compu",
+      "category": "video",
+      "what": {
+        "es": "Editor multipista completo, con subtítulos por IA.",
+        "en": "Full multitrack video editor with AI captions."
+      },
+      "runs": "computer",
       "url": "https://kdenlive.org"
     },
     {
@@ -41,9 +53,12 @@
       "replaces": [
         "CapCut"
       ],
-      "category": "Video",
-      "what": "Editor de video en el navegador; el material no sale de tu equipo.",
-      "runs": "Navegador",
+      "category": "video",
+      "what": {
+        "es": "Editor de video en el navegador; el material no sale de tu equipo.",
+        "en": "Video editor in the browser; your footage never leaves your machine."
+      },
+      "runs": "browser",
       "url": "https://www.opensourcealternatives.to/item/opencut"
     },
     {
@@ -51,9 +66,12 @@
       "replaces": [
         "Descript"
       ],
-      "category": "Video",
-      "what": "Editas el video editando la transcripción. Transcribe local, sin cuenta.",
-      "runs": "Navegador",
+      "category": "video",
+      "what": {
+        "es": "Editas el video editando la transcripción. Transcribe local, sin cuenta.",
+        "en": "Edit video by editing the transcript. Transcribes locally, no account."
+      },
+      "runs": "browser",
       "url": "https://www.producthunt.com/products/rescript-edit-videos-like-you-edit-text"
     },
     {
@@ -62,9 +80,12 @@
         "Opus Clip",
         "Klap"
       ],
-      "category": "Video",
-      "what": "Corta un video largo en Shorts/Reels con IA: mejores momentos, subtítulos animados y reencuadre vertical.",
-      "runs": "Tu compu",
+      "category": "video",
+      "what": {
+        "es": "Corta un video largo en Shorts/Reels con IA: mejores momentos, subtítulos animados y reencuadre vertical.",
+        "en": "Cuts a long video into Shorts/Reels with AI: best moments, animated captions and vertical reframing."
+      },
+      "runs": "computer",
       "url": "https://github.com/GrepCut/OpenClipper"
     },
     {
@@ -73,9 +94,12 @@
         "Opus Clip",
         "SubMagic"
       ],
-      "category": "Video",
-      "what": "Script: video largo a shorts 9:16 con highlights por LLM, Whisper y recorte vertical.",
-      "runs": "Tu compu",
+      "category": "video",
+      "what": {
+        "es": "Script: video largo a shorts 9:16 con highlights por LLM, Whisper y recorte vertical.",
+        "en": "Script: long video to 9:16 shorts with LLM highlights, Whisper and vertical crop."
+      },
+      "runs": "computer",
       "url": "https://github.com/samuraigpt/ai-youtube-shorts-generator"
     },
     {
@@ -83,9 +107,12 @@
       "replaces": [
         "After Effects"
       ],
-      "category": "Video",
-      "what": "Motion graphics escritos en HTML y renderizados a MP4.",
-      "runs": "Tu compu",
+      "category": "video",
+      "what": {
+        "es": "Motion graphics escritos en HTML y renderizados a MP4.",
+        "en": "Motion graphics written in HTML and rendered to MP4."
+      },
+      "runs": "computer",
       "url": "https://github.com/heygen-com/hyperframes"
     },
     {
@@ -96,9 +123,12 @@
         "Otter",
         "Rev"
       ],
-      "category": "Audio y voz",
-      "what": "Transcripción local en el chip de una Mac con Apple Silicon. Gratis y el audio no sale de tu equipo.",
-      "runs": "Tu compu",
+      "category": "audio",
+      "what": {
+        "es": "Transcripción local en el chip de una Mac con Apple Silicon. Gratis y el audio no sale de tu equipo.",
+        "en": "Local transcription on an Apple Silicon Mac. Free, and the audio never leaves your machine."
+      },
+      "runs": "computer",
       "url": "https://github.com/ml-explore/mlx-examples/tree/main/whisper"
     },
     {
@@ -106,9 +136,12 @@
       "replaces": [
         "ElevenLabs"
       ],
-      "category": "Audio y voz",
-      "what": "Clonación de voz, doblaje, dictado y audiolibros, sin cobro por carácter.",
-      "runs": "Tu compu",
+      "category": "audio",
+      "what": {
+        "es": "Clonación de voz, doblaje, dictado y audiolibros, sin cobro por carácter.",
+        "en": "Voice cloning, dubbing, dictation and audiobooks, with no per-character fees."
+      },
+      "runs": "computer",
       "url": "https://github.com/debpalash/OmniVoice-Studio"
     },
     {
@@ -116,9 +149,12 @@
       "replaces": [
         "Adobe Audition"
       ],
-      "category": "Audio y voz",
-      "what": "Grabación y edición de audio.",
-      "runs": "Tu compu",
+      "category": "audio",
+      "what": {
+        "es": "Grabación y edición de audio.",
+        "en": "Audio recording and editing."
+      },
+      "runs": "computer",
       "url": "https://www.audacityteam.org"
     },
     {
@@ -126,9 +162,12 @@
       "replaces": [
         "Loom"
       ],
-      "category": "Grabación de pantalla",
-      "what": "Grabación de pantalla con links, comentarios y transcripción.",
-      "runs": "Tu compu",
+      "category": "screen",
+      "what": {
+        "es": "Grabación de pantalla con links, comentarios y transcripción.",
+        "en": "Screen recording with share links, comments and transcripts."
+      },
+      "runs": "computer",
       "url": "https://github.com/CapSoftware/Cap"
     },
     {
@@ -136,9 +175,12 @@
       "replaces": [
         "Screen Studio"
       ],
-      "category": "Grabación de pantalla",
-      "what": "Grabación con zoom automático, seguimiento del cursor y subtítulos locales.",
-      "runs": "Tu compu",
+      "category": "screen",
+      "what": {
+        "es": "Grabación con zoom automático, seguimiento del cursor y subtítulos locales.",
+        "en": "Screen recording with auto-zoom, cursor tracking and local captions."
+      },
+      "runs": "computer",
       "url": "https://openscreen.io"
     },
     {
@@ -147,9 +189,12 @@
         "Riverside",
         "StreamYard"
       ],
-      "category": "Grabación de pantalla",
-      "what": "Grabación y streaming hasta 4K, sin límite. No trae editor.",
-      "runs": "Tu compu",
+      "category": "screen",
+      "what": {
+        "es": "Grabación y streaming hasta 4K, sin límite. No trae editor.",
+        "en": "Recording and streaming up to 4K, no limits. No editor included."
+      },
+      "runs": "computer",
       "url": "https://obsproject.com"
     },
     {
@@ -157,9 +202,12 @@
       "replaces": [
         "remove.bg"
       ],
-      "category": "Diseño e imagen",
-      "what": "Quita fondos con IA, sin límite ni marca de agua. De línea de comandos: Claude lo corre por ti.",
-      "runs": "Tu compu",
+      "category": "design",
+      "what": {
+        "es": "Quita fondos con IA, sin límite ni marca de agua. De línea de comandos: Claude lo corre por ti.",
+        "en": "AI background removal, no limits or watermark. Command line: Claude runs it for you."
+      },
+      "runs": "computer",
       "url": "https://github.com/danielgatis/rembg"
     },
     {
@@ -167,9 +215,12 @@
       "replaces": [
         "Midjourney"
       ],
-      "category": "Diseño e imagen",
-      "what": "Genera imágenes y video con modelos abiertos, por nodos. Pide bastante memoria.",
-      "runs": "Tu compu",
+      "category": "design",
+      "what": {
+        "es": "Genera imágenes y video con modelos abiertos, por nodos. Pide bastante memoria.",
+        "en": "Generate images and video with open models, node by node. Needs a lot of memory."
+      },
+      "runs": "computer",
       "url": "https://www.comfy.org"
     },
     {
@@ -178,9 +229,12 @@
         "Canva",
         "Figma"
       ],
-      "category": "Diseño e imagen",
-      "what": "Diseño y prototipos en el navegador, sin pago por usuario.",
-      "runs": "Navegador",
+      "category": "design",
+      "what": {
+        "es": "Diseño y prototipos en el navegador, sin pago por usuario.",
+        "en": "Design and prototyping in the browser, no per-seat pricing."
+      },
+      "runs": "browser",
       "url": "https://penpot.app"
     },
     {
@@ -190,9 +244,12 @@
         "Otter",
         "Granola"
       ],
-      "category": "Reuniones",
-      "what": "Transcribe y resume reuniones en tu compu, sin bot en la llamada.",
-      "runs": "Tu compu",
+      "category": "meetings",
+      "what": {
+        "es": "Transcribe y resume reuniones en tu compu, sin bot en la llamada.",
+        "en": "Transcribes and summarizes meetings on your computer, no bot in the call."
+      },
+      "runs": "computer",
       "url": "https://meetily.ai/open-source"
     },
     {
@@ -201,9 +258,12 @@
         "Fireflies",
         "Fathom"
       ],
-      "category": "Reuniones",
-      "what": "Asistente local: transcripción, quién habló y notas con IA.",
-      "runs": "Tu compu",
+      "category": "meetings",
+      "what": {
+        "es": "Asistente local: transcripción, quién habló y notas con IA.",
+        "en": "Local assistant: transcript, who spoke, and AI notes."
+      },
+      "runs": "computer",
       "url": "https://github.com/estebanstifli/Meet2Notes"
     },
     {
@@ -211,9 +271,12 @@
       "replaces": [
         "Zoom"
       ],
-      "category": "Reuniones",
-      "what": "Videollamadas en el navegador, sin cuenta.",
-      "runs": "Navegador",
+      "category": "meetings",
+      "what": {
+        "es": "Videollamadas en el navegador, sin cuenta.",
+        "en": "Video calls in the browser, no account."
+      },
+      "runs": "browser",
       "url": "https://meet.jit.si"
     },
     {
@@ -221,9 +284,12 @@
       "replaces": [
         "Slack"
       ],
-      "category": "Reuniones",
-      "what": "Chat de equipo con canales, en tu servidor. Las integraciones de Slack no pasan solas.",
-      "runs": "Servidor",
+      "category": "meetings",
+      "what": {
+        "es": "Chat de equipo con canales, en tu servidor. Las integraciones de Slack no pasan solas.",
+        "en": "Team chat with channels, on your own server. Slack integrations don't carry over."
+      },
+      "runs": "server",
       "url": "https://mattermost.com"
     },
     {
@@ -233,9 +299,12 @@
         "Bolt",
         "v0"
       ],
-      "category": "Construir apps",
-      "what": "Construye apps con IA en tu compu; pones tu propia API key.",
-      "runs": "Tu compu",
+      "category": "apps",
+      "what": {
+        "es": "Construye apps con IA en tu compu; pones tu propia API key.",
+        "en": "Build apps with AI on your computer, using your own API key."
+      },
+      "runs": "computer",
       "url": "https://github.com/dyad-sh/dyad"
     },
     {
@@ -244,9 +313,12 @@
         "Lovable",
         "Bolt"
       ],
-      "category": "Construir apps",
-      "what": "Versión abierta de Bolt.new. Más técnica de montar.",
-      "runs": "Servidor",
+      "category": "apps",
+      "what": {
+        "es": "Versión abierta de Bolt.new. Más técnica de montar.",
+        "en": "Open version of Bolt.new. More technical to set up."
+      },
+      "runs": "server",
       "url": "https://github.com/stackblitz-labs/bolt.diy"
     },
     {
@@ -257,9 +329,12 @@
         "Later",
         "Zernio"
       ],
-      "category": "Marketing y redes",
-      "what": "Programa posts en 14+ redes (LinkedIn, Instagram, Pinterest…). Tiene API.",
-      "runs": "Servidor",
+      "category": "marketing",
+      "what": {
+        "es": "Programa posts en 14+ redes (LinkedIn, Instagram, Pinterest…). Tiene API.",
+        "en": "Schedule posts on 14+ networks (LinkedIn, Instagram, Pinterest…). Has an API."
+      },
+      "runs": "server",
       "url": "https://openalternative.co/postiz"
     },
     {
@@ -267,9 +342,12 @@
       "replaces": [
         "Bitly"
       ],
-      "category": "Marketing y redes",
-      "what": "Links cortos con analytics; nube con plan gratis.",
-      "runs": "Servidor",
+      "category": "marketing",
+      "what": {
+        "es": "Links cortos con analytics; nube con plan gratis.",
+        "en": "Short links with analytics; cloud version has a free plan."
+      },
+      "runs": "server",
       "url": "https://github.com/dubinc/dub"
     },
     {
@@ -277,9 +355,12 @@
       "replaces": [
         "Bitly"
       ],
-      "category": "Marketing y redes",
-      "what": "Acortador de links simple con estadísticas.",
-      "runs": "Servidor",
+      "category": "marketing",
+      "what": {
+        "es": "Acortador de links simple con estadísticas.",
+        "en": "Simple link shortener with stats."
+      },
+      "runs": "server",
       "url": "https://github.com/thedevs-network/kutt"
     },
     {
@@ -287,9 +368,12 @@
       "replaces": [
         "Linktree"
       ],
-      "category": "Marketing y redes",
-      "what": "Página de links para la bio, muy personalizable.",
-      "runs": "Servidor",
+      "category": "marketing",
+      "what": {
+        "es": "Página de links para la bio, muy personalizable.",
+        "en": "Link-in-bio page, highly customizable."
+      },
+      "runs": "server",
       "url": "https://linkstack.org"
     },
     {
@@ -297,9 +381,12 @@
       "replaces": [
         "Grammarly"
       ],
-      "category": "Marketing y redes",
-      "what": "Corrector en 40+ idiomas, con extensión de navegador.",
-      "runs": "Navegador",
+      "category": "marketing",
+      "what": {
+        "es": "Corrector en 40+ idiomas, con extensión de navegador.",
+        "en": "Grammar checker in 40+ languages, with a browser extension."
+      },
+      "runs": "browser",
       "url": "https://languagetool.org"
     },
     {
@@ -310,9 +397,12 @@
         "Kit",
         "Beehiiv"
       ],
-      "category": "Marketing y redes",
-      "what": "Newsletter y listas de correo en tu servidor.",
-      "runs": "Servidor",
+      "category": "marketing",
+      "what": {
+        "es": "Newsletter y listas de correo en tu servidor.",
+        "en": "Newsletter and mailing lists on your own server."
+      },
+      "runs": "server",
       "url": "https://listmonk.app"
     },
     {
@@ -322,9 +412,12 @@
         "Tally",
         "SurveyMonkey"
       ],
-      "category": "Marketing y redes",
-      "what": "Formularios y encuestas con respuestas ilimitadas.",
-      "runs": "Servidor",
+      "category": "marketing",
+      "what": {
+        "es": "Formularios y encuestas con respuestas ilimitadas.",
+        "en": "Forms and surveys with unlimited responses."
+      },
+      "runs": "server",
       "url": "https://formbricks.com"
     },
     {
@@ -332,9 +425,12 @@
       "replaces": [
         "Google Analytics"
       ],
-      "category": "Marketing y redes",
-      "what": "Analytics web simple y privado, sin banner de cookies.",
-      "runs": "Servidor",
+      "category": "marketing",
+      "what": {
+        "es": "Analytics web simple y privado, sin banner de cookies.",
+        "en": "Simple, private web analytics, no cookie banner."
+      },
+      "runs": "server",
       "url": "https://umami.is"
     },
     {
@@ -342,9 +438,12 @@
       "replaces": [
         "Google Analytics"
       ],
-      "category": "Marketing y redes",
-      "what": "Analytics web ligero y privado.",
-      "runs": "Servidor",
+      "category": "marketing",
+      "what": {
+        "es": "Analytics web ligero y privado.",
+        "en": "Lightweight, private web analytics."
+      },
+      "runs": "server",
       "url": "https://plausible.io"
     },
     {
@@ -354,9 +453,12 @@
         "PandaDoc",
         "BreezeDoc"
       ],
-      "category": "Ventas y admin",
-      "what": "Firmas electrónicas con historial, sin cobro por documento. Tiene API.",
-      "runs": "Servidor",
+      "category": "sales",
+      "what": {
+        "es": "Firmas electrónicas con historial, sin cobro por documento. Tiene API.",
+        "en": "E-signatures with audit trail, no per-document fees. Has an API."
+      },
+      "runs": "server",
       "url": "https://github.com/documenso/documenso"
     },
     {
@@ -366,9 +468,12 @@
         "TidyCal",
         "Acuity"
       ],
-      "category": "Ventas y admin",
-      "what": "Agenda de citas con varios servicios y personas; sincroniza con Google Calendar.",
-      "runs": "Servidor",
+      "category": "sales",
+      "what": {
+        "es": "Agenda de citas con varios servicios y personas; sincroniza con Google Calendar.",
+        "en": "Appointment booking for several services and people; syncs with Google Calendar."
+      },
+      "runs": "server",
       "url": "https://easyappointments.org"
     },
     {
@@ -378,9 +483,12 @@
         "Attio",
         "Pipedrive"
       ],
-      "category": "Ventas y admin",
-      "what": "CRM moderno, personalizable sin código.",
-      "runs": "Servidor",
+      "category": "sales",
+      "what": {
+        "es": "CRM moderno, personalizable sin código.",
+        "en": "Modern CRM, customizable without code."
+      },
+      "runs": "server",
       "url": "https://github.com/twentyhq/twenty"
     },
     {
@@ -389,9 +497,12 @@
         "QuickBooks",
         "Zoho"
       ],
-      "category": "Ventas y admin",
-      "what": "ERP todo en uno: CRM, facturación e inventario.",
-      "runs": "Servidor",
+      "category": "sales",
+      "what": {
+        "es": "ERP todo en uno: CRM, facturación e inventario.",
+        "en": "All-in-one ERP: CRM, invoicing and inventory."
+      },
+      "runs": "server",
       "url": "https://www.dolibarr.org"
     },
     {
@@ -400,9 +511,12 @@
         "Zapier",
         "Make"
       ],
-      "category": "Automatización",
-      "what": "Automatizaciones visuales con 400+ integraciones.",
-      "runs": "Servidor",
+      "category": "automation",
+      "what": {
+        "es": "Automatizaciones visuales con 400+ integraciones.",
+        "en": "Visual automations with 400+ integrations."
+      },
+      "runs": "server",
       "url": "https://github.com/n8n-io/n8n"
     },
     {
@@ -410,9 +524,12 @@
       "replaces": [
         "Zapier"
       ],
-      "category": "Automatización",
-      "what": "Automatizaciones, más parecido a Zapier y más simple que n8n.",
-      "runs": "Servidor",
+      "category": "automation",
+      "what": {
+        "es": "Automatizaciones, más parecido a Zapier y más simple que n8n.",
+        "en": "Automations, closer to Zapier and simpler than n8n."
+      },
+      "runs": "server",
       "url": "https://github.com/activepieces/activepieces"
     },
     {
@@ -422,9 +539,12 @@
         "LastPass",
         "Dashlane"
       ],
-      "category": "Seguridad",
-      "what": "Gestor de contraseñas con plan gratis en la nube.",
-      "runs": "Navegador",
+      "category": "security",
+      "what": {
+        "es": "Gestor de contraseñas con plan gratis en la nube.",
+        "en": "Password manager with a free cloud plan."
+      },
+      "runs": "browser",
       "url": "https://bitwarden.com"
     },
     {
@@ -433,9 +553,12 @@
         "1Password",
         "Bitwarden"
       ],
-      "category": "Seguridad",
-      "what": "Servidor liviano compatible con las apps de Bitwarden.",
-      "runs": "Servidor",
+      "category": "security",
+      "what": {
+        "es": "Servidor liviano compatible con las apps de Bitwarden.",
+        "en": "Lightweight server compatible with the Bitwarden apps."
+      },
+      "runs": "server",
       "url": "https://github.com/dani-garcia/vaultwarden"
     },
     {
@@ -445,9 +568,12 @@
         "Google Drive",
         "Box"
       ],
-      "category": "Archivos",
-      "what": "Nube de archivos propia, con calendario y contactos.",
-      "runs": "Servidor",
+      "category": "files",
+      "what": {
+        "es": "Nube de archivos propia, con calendario y contactos.",
+        "en": "Your own file cloud, with calendar and contacts."
+      },
+      "runs": "server",
       "url": "https://nextcloud.com"
     },
     {
@@ -455,9 +581,12 @@
       "replaces": [
         "Microsoft 365"
       ],
-      "category": "Archivos",
-      "what": "Documentos, hojas de cálculo y presentaciones en tu compu.",
-      "runs": "Tu compu",
+      "category": "files",
+      "what": {
+        "es": "Documentos, hojas de cálculo y presentaciones en tu compu.",
+        "en": "Documents, spreadsheets and presentations on your computer."
+      },
+      "runs": "computer",
       "url": "https://www.libreoffice.org"
     }
   ]

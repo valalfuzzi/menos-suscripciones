@@ -170,12 +170,35 @@ class ReportTests(unittest.TestCase):
         self.assertIn('href="https://westpoint.io', html)
         self.assertIn('"saving": 26', html)
 
+    def test_spanish_and_english_verdicts_are_the_same(self):
+        es = build_rows(self.diag(), self.scan)
+        en_diag = self.diag()
+        for sub, v in zip(en_diag["subscriptions"], ("keep", "replace", "review")):
+            sub["verdict"] = v
+        self.assertEqual(summary(es), summary(build_rows(en_diag, self.scan)))
+
+    def test_english_page(self):
+        html = render(self.diag(lang="en", directory={"Mimik": {"status": "Ya lo tienes"}}), self.scan, self.catalog)
+        self.assertIn('<html lang="en">', html)
+        self.assertIn("What you can cut", html)
+        self.assertIn(">Replace<", html)
+        self.assertIn('"status_label": "You have it"', html)
+        self.assertIn("Browser extension: record what you do", html)
+        self.assertNotIn("Lo que puedes cortar", html)
+
+    def test_footer_links_newsletter_and_author(self):
+        html = render(self.diag(), self.scan, self.catalog)
+        self.assertIn("https://valatnerdheart.substack.com", html)
+        self.assertIn("https://www.valeriaalfuzzi.com", html)
+
     def test_example_renders(self):
         scan = detect(load_csv(ROOT / "examples" / "tarjeta-ejemplo.csv")[0])
         diag = json.loads((ROOT / "examples" / "diagnostico-ejemplo.json").read_text(encoding="utf-8"))
         html = render(diag, scan, self.catalog)
         self.assertIn("$56.18", html)
         self.assertIn("$674", html)
+        diag_en = json.loads((ROOT / "examples" / "diagnosis-example-en.json").read_text(encoding="utf-8"))
+        self.assertIn("$674", render(diag_en, scan, self.catalog))
 
 
 if __name__ == "__main__":

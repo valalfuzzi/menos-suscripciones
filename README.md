@@ -1,73 +1,80 @@
-![Menos suscripciones](assets/banner.png)
+[Español](README.es.md) · **English**
 
-# Menos suscripciones
+![Fewer subscriptions](assets/banner-en.png)
 
-Claude revisa lo que te cobra la tarjeta, te dice qué cancelar y te da alternativas gratis.
+# Menos suscripciones (Fewer subscriptions)
 
-## Qué es esto
+Claude reviews what your card charges you, tells you what to cancel, and finds free alternatives.
 
-Es una habilidad (skill) para Claude Code. Le pasas el estado de cuenta de tu banco o tu tarjeta y Claude encuentra todos los cobros que se repiten cada mes. Te pregunta lo que no puede adivinar, decide qué se queda y qué se va, y te arma una página con el plan: cuánto pagas hoy, cuánto puedes cortar y qué herramienta gratis hace lo mismo.
+## What this is
 
-## El problema que resuelve
+A skill for Claude Code that works in English or Spanish: Claude answers in whatever language you write in. You hand it your bank or card statement and Claude finds every charge that repeats each month. It asks about what it can't guess, decides what stays and what goes, and builds you a page with the plan: what you pay today, what you can cut, and which free tool does the same job.
 
-Las suscripciones se acumulan solas. Pruebas una herramienta por un mes, se te olvida, y seis meses después pagas $11 por algo que ya no abres. Revisar el estado de cuenta línea por línea es aburrido, así que nadie lo hace. Con esta skill es una conversación de diez minutos.
+## The problem it solves
 
-## Qué hay adentro
+Subscriptions pile up on their own. You try a tool for a month, forget about it, and six months later you're paying $11 for something you never open. Going through a statement line by line is tedious, so nobody does it. With this skill it's a ten-minute conversation.
 
-- `.claude/skills/menos-suscripciones/` — las instrucciones que sigue Claude. Es el cerebro del asunto.
-- `menos_suscripciones/` — el programa que lee tus transacciones, encuentra lo que se repite y arma la página. No hace falta abrirlo.
-- `menos_suscripciones/alternatives.json` — el directorio de 42 herramientas open source y qué reemplaza cada una.
-- `examples/` — un estado de cuenta inventado y la página que sale de él, para que veas el resultado antes de usar tus datos.
-- `tests/` — pruebas automáticas que confirman que las cuentas dan.
+## What's inside
 
-## Cómo instalarlo
+- `.claude/skills/menos-suscripciones/` — the instructions Claude follows. This is the brain of it.
+- `menos_suscripciones/` — the program that reads your transactions, finds what repeats, and builds the page. You don't need to open it.
+- `menos_suscripciones/alternatives.json` — the directory of 42 open-source tools and what each one replaces.
+- `examples/` — a made-up statement and the page it produces, in English and Spanish, so you can see the result before using your own data.
+- `tests/` — automatic checks that the math adds up.
 
-Necesitas [Claude Code](https://claude.com/claude-code) (la versión de Claude que trabaja con archivos en tu compu). No hace falta instalar nada más: el programa usa el Python que ya trae la Mac.
+## How to install it
 
-1. Arriba en esta página, toca el botón verde **Code** y luego **Download ZIP**.
-2. Descomprime el ZIP. Te queda una carpeta llamada `menos-suscripciones`.
-3. Descarga el estado de cuenta de tu tarjeta en formato CSV. Casi todos los bancos lo tienen en «Exportar» o «Descargar movimientos». Pide al menos 6 meses, y mejor 12.
-4. Abre Claude Code dentro de la carpeta `menos-suscripciones`.
-5. Escríbele: **«Revisa mis suscripciones con este archivo: »** y arrastra el CSV a la ventana.
+You need [Claude Code](https://claude.com/claude-code) (the version of Claude that works with files on your computer). Nothing else to install: the program uses the Python that already comes with your Mac.
 
-Si usas Mercury, en el paso 3 puedes darle a Claude una llave de solo lectura (Mercury → Settings → Tokens) y no tienes que descargar nada.
+1. At the top of this page, click the green **Code** button, then **Download ZIP**.
+2. Unzip it. You'll get a folder called `menos-suscripciones`.
+3. Download your card statement as a CSV. Almost every bank has it under "Export" or "Download transactions". Ask for at least 6 months, ideally 12.
+4. Open Claude Code inside the `menos-suscripciones` folder.
+5. Type: **"Review my subscriptions with this file: "** and drag the CSV into the window.
 
-**Sabrás que funcionó cuando** se abra en tu navegador una página como la de abajo, con tus herramientas y lo que puedes ahorrar.
+If you bank with Mercury, in step 3 you can give Claude a read-only key (Mercury → Settings → Tokens) and skip the download.
 
-Tus datos bancarios no salen de tu compu: se guardan en la carpeta `work/`, que nunca se sube a ningún lado.
+**You'll know it worked when** a page like the one below opens in your browser, with your tools and what you can save.
 
-## Así se ve
+Your bank data stays on your computer: it's saved in the `work/` folder, which is never uploaded anywhere.
 
-![Página de ejemplo con el resumen, el plan y la tabla de suscripciones](assets/ejemplo.png)
+## See it in action
+
+![Example page with the summary, the plan and the subscriptions table](assets/example-en.png)
 
 ```mermaid
 flowchart LR
-    A[Estado de cuenta<br>CSV o Mercury] --> B[El programa encuentra<br>los cobros que se repiten]
-    B --> C{Claude pregunta<br>lo que no sabe}
-    C --> D[Diagnóstico:<br>mantener · revisar ·<br>reemplazar · cancelar]
-    E[Directorio de 42<br>alternativas gratis] --> D
-    D --> F[Tu página con<br>el plan y el ahorro]
+    A[Statement<br>CSV or Mercury] --> B[The program finds<br>repeating charges]
+    B --> C{Claude asks<br>what it can't know}
+    C --> D[Diagnosis:<br>keep · review ·<br>replace · cancel]
+    E[Directory of 42<br>free alternatives] --> D
+    D --> F[Your page with<br>the plan and savings]
 ```
 
 <details>
-<summary>Detalles técnicos</summary>
+<summary>Technical background</summary>
 
-- **Stack:** Python 3.9+ solo con librería estándar (sin `pip install`). La página es un único HTML estático con CSS y JS en línea; usa Google Fonts y funciona sin ellas.
-- **Cómo funciona:** `python3 -m menos_suscripciones scan` normaliza las transacciones (`loaders.py`) a `Charge(date, description, amount)` con cargos en negativo, agrupa por comercio (`detect.merchant_key`) y escribe `work/scan.json`. Claude lee ese archivo, escribe `work/diagnostico.json` con veredictos y razones, y `render` cruza los dos con el catálogo para generar el HTML.
-- **Detección:** la unidad es el mes, no el cargo. Un comercio con cobros en meses consecutivos es mensual (también trimestral o anual por la mediana de la distancia entre meses). Eso resuelve dos planes del mismo proveedor, cobro por uso y recargas de créditos, que rompen la detección por intervalos entre cargos. Los reembolsos se netean en su mes; un comercio con saldo neto positivo es ingreso y se descarta.
-- **Separación de responsabilidades:** el modelo nunca hace aritmética. Todo monto de la página sale de `scan.json`; el diagnóstico solo referencia llaves (`keys`), y `render` falla si una llave no existe o un veredicto no es válido.
-- **Fuentes:** CSV de cualquier banco (detecta separador, columnas en inglés o español, monto único o débito/crédito, fechas día/mes o mes/día, cargos en positivo con aviso), JSON genérico o con la forma de Mercury, y la API de Mercury (`GET /transactions`, Basic Auth, paginado con `start_after`). Se descartan transferencias internas y transacciones fallidas o canceladas.
-- **Limitaciones:** solo ve las tarjetas que le pases. Un cobro mensual que apareció una sola vez en el período queda como cargo único. La normalización de comercios es heurística: si dos nombres raros son lo mismo, Claude los junta en el diagnóstico.
-- **Pruebas:** `python3 -m unittest discover -s tests`.
+- **Stack:** Python 3.9+ standard library only (no `pip install`). The page is a single static HTML file with inline CSS and JS; it uses Google Fonts and works without them.
+- **How it works:** `python3 -m menos_suscripciones scan` normalizes transactions (`loaders.py`) into `Charge(date, description, amount)` with charges negative, groups them by merchant (`detect.merchant_key`), and writes `work/scan.json`. Claude reads that file and writes `work/diagnosis.json` with verdicts and reasons; `render` joins both with the catalog to produce the HTML.
+- **Detection:** the unit is the month, not the charge. A merchant charging in consecutive months is monthly (quarterly or annual from the median gap between active months). That handles two plans from the same vendor, usage-based billing and credit top-ups, which break detection based on the interval between charges. Refunds net into their month; a merchant with a positive net balance is income and is dropped.
+- **Separation of concerns:** the model never does arithmetic. Every amount on the page comes from `scan.json`; the diagnosis only references keys, and `render` fails on an unknown key or verdict.
+- **Languages:** `"lang": "en" | "es"` in the diagnosis switches every label on the page; the catalog carries both languages. Verdicts and statuses are accepted in either language.
+- **Sources:** a CSV from any bank (detects delimiter, English or Spanish headers, single amount or debit/credit columns, day/month or month/day dates, positive charges with a warning), generic JSON or Mercury-shaped JSON, and the Mercury API (`GET /transactions`, Basic Auth, paginated with `start_after`). Internal transfers and failed or cancelled transactions are dropped.
+- **Limitations:** it only sees the cards you give it. A monthly charge that appeared once in the period is listed as a one-off. Merchant normalization is heuristic: when two odd names are the same tool, Claude merges them in the diagnosis.
+- **Tests:** `python3 -m unittest discover -s tests`.
 
 </details>
 
-## Preguntas y siguientes pasos
+## Questions and next steps
 
-- ¿Tu banco exporta un CSV que no lee? Abre un issue con los encabezados del archivo (sin tus movimientos).
-- ¿Conoces una alternativa open source buena? Agrégala a `menos_suscripciones/alternatives.json` y manda un pull request.
-- Licencia MIT.
+- Does your bank export a CSV it can't read? Open an issue with the file's headers (not your transactions).
+- Know a good open-source alternative? Add it to `menos_suscripciones/alternatives.json` and send a pull request.
+- MIT license.
 
-## Quién lo hizo
+## More tools like this
 
-Lo hice yo, [Valeria Alfuzzi](https://www.valeriaalfuzzi.com), consultora de Notion y arquitecta de sistemas con IA en [Nerd Heart](https://nerdheart.net). Si quieres algo así para tu negocio, o tienes una idea para mejorarlo, escríbeme a [team@nerdheart.net](mailto:team@nerdheart.net) o pasa por [valeriaalfuzzi.com](https://www.valeriaalfuzzi.com).
+I publish free tools like this one in my newsletter, [Val en Nerd Heart](https://valatnerdheart.substack.com) (in Spanish). When your diagnosis is done, Claude asks once whether you'd like to subscribe; if you say yes, it opens the page so you confirm it yourself. If you say no, it won't ask again.
+
+## Who made it
+
+Me, [Valeria Alfuzzi](https://www.valeriaalfuzzi.com), a Notion consultant and AI systems architect at [Nerd Heart](https://nerdheart.net). If you want something like this for your business, or have an idea to make it better, email me at [team@nerdheart.net](mailto:team@nerdheart.net) or visit [valeriaalfuzzi.com](https://www.valeriaalfuzzi.com).
